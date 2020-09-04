@@ -16,10 +16,10 @@ local function fileWrite(path, content)
 end
 
 local function success(msg)
-    ngx.say(string.format([[{"status":%d,"message":"%s"}]], 200, msg))
+    ngx.say(string.format([[{"code":%d,"message":"%s"}]], 200, msg))
 end
 local function fail(msg)
-    ngx.say(string.format([[{"status":%d,"message":"%s"}]], 300, msg))
+    ngx.say(string.format([[{"code":%d,"message":"%s"}]], 300, msg))
 end
 
 local function tableKeyFind(tbl, key)
