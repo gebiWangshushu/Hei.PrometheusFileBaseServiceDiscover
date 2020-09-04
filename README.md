@@ -35,7 +35,7 @@ scrape_configs:
 	   content_by_lua_file /home/website/prometheus/prometheus-filebase-servicediscover.lua;  
  }
 
-error_log   /var/log/nginx/prometheus.error.log   debug; #开始跑的时候建议把debug日志打开
+error_log   /var/log/nginx/prometheus.error.log   debug; #刚开始跑的时候建议把debug日志打开
 ```
 
 
@@ -45,7 +45,7 @@ error_log   /var/log/nginx/prometheus.error.log   debug; #开始跑的时候建�
 ## 注册服务
 
 ```
-curl --location --request POST 'http://172.16.3.117:81/prometheus?target=2' \
+curl --location --request POST 'http://your_id:port/prometheus' \
 --header 'Content-Type: application/json' \
 --data-raw '  {
     "type":"registe",
@@ -71,7 +71,7 @@ curl --location --request POST 'http://172.16.3.117:81/prometheus?target=2' \
 ## 注销服务
 
 ```
-curl --location --request POST 'http://172.16.3.117:81/prometheus?target=2' \
+curl --location --request POST 'http://your_id:port/prometheus' \
 --header 'Content-Type: application/json' \
 --data-raw '  {
     "type":"deregiste",
