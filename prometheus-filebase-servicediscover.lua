@@ -89,12 +89,18 @@ local function deregisteConfig(configObj, postConfigObj, targetFile)
         for i, target in ipairs(configObj[index].targets) do
             if tableValueFind(postConfigObj.targets, target) then
                 table.remove(configObj[index].targets, i)
+                print('removeremoveremoveremoveremove')
             end
+        end
+
+        local len = table.getn(configObj[index].targets)
+        if len == 0 then
+            table.remove(configObj, index)
         end
 
         local newConfig = json.encode(configObj)
         fileWrite(targetFile, newConfig)
-        print('注销配置成功')
+        print('注销配置成功', newConfig)
         return true
     else
         print('注销配置失败，配置不存在：', postConfigObj.labels.app)
@@ -119,7 +125,7 @@ local configFile = fileRead(targetFilePath)
 if configFile == nil or configFile == '' then
     configFile = '[]'
 end
-print('老配置', configFile)
+print('原配置', configFile)
 
 --update config
 local configObj = json.decode(configFile)
