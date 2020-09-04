@@ -1,0 +1,2 @@
+# Hei.PrometheusFileBaseServiceDiscover
+监控解决方案prometheus，基于文件的服务发现配置脚本，使用OpenResty+Lua实现
