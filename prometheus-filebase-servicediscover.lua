@@ -89,7 +89,6 @@ local function deregisteConfig(configObj, postConfigObj, targetFile)
         for i, target in ipairs(configObj[index].targets) do
             if tableValueFind(postConfigObj.targets, target) then
                 table.remove(configObj[index].targets, i)
-                print('removeremoveremoveremoveremove')
             end
         end
 
@@ -99,7 +98,7 @@ local function deregisteConfig(configObj, postConfigObj, targetFile)
         end
 
         local newConfig = json.encode(configObj)
-        fileWrite(targetFile, newConfig)
+        fileWrite(targetFile, table.getn(configObj) > 0 and newConfig or '')
         print('注销配置成功', newConfig)
         return true
     else
