@@ -115,8 +115,13 @@ ngx.req.read_body()
 local params = ngx.req.get_body_data()
 
 local postConfigObj = json.decode(params)
-if postConfigObj.labels.app == nil then
-    return fail('labels.app  不能为空')
+print('postConfigObj.targets:', type(postConfigObj.targets) == 'userdata')
+if
+    (postConfigObj.labels == nil) or (type(postConfigObj.labels) == 'userdata') or
+        (type(postConfigObj.targets) == 'userdata') or
+        (postConfigObj.labels.app) == nil
+ then
+    return fail('labels.app、targets 均不能为空')
 end
 
 --init target config
